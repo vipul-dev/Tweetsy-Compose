@@ -22,6 +22,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.tweetsycompose.app.screens.CategoryScreen
 import com.tweetsycompose.app.screens.DetailScreen
+import com.tweetsycompose.app.screens.OtherCustomScreen
 import com.tweetsycompose.app.ui.theme.TweetsyComposeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -64,7 +65,13 @@ fun App() {
             type = NavType.StringType
         })) {
             val category = it.arguments!!.getString("category")
-            DetailScreen(category)
+            DetailScreen(category){
+                navController.navigate("OtherScreen")
+            }
+        }
+
+        composable(route = "OtherScreen"){
+            OtherCustomScreen()
         }
     }
 }
